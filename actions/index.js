@@ -2,14 +2,22 @@ export const ADD_CARD = "ADD_CARD";
 export const RECEIVE_DECKS = "RECEIVE_DECKS";
 export const ADD_DECK = "ADD_DECK";
 
-import { addCardToDeck } from "../utils/api";
-import { saveDeckTitle } from "../utils/api";
+import { saveDeckTitle,addCardToDeck, getDecks } from "../utils/api";
 
-export function receiveDecks(decks) {
+function receiveDecks(decks) {
+  console.log('HI')
+
+  console.log(decks)
   return {
     type: RECEIVE_DECKS,
     decks
   };
+}
+
+export function handleReceiveDecks(){
+  return dispatch => {
+    return getDecks().then(decks => dispatch(receiveDecks(decks)))
+  }
 }
 
 export function handleAddDeck(title) {

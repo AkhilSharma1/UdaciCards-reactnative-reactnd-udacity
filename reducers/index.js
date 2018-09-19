@@ -1,6 +1,6 @@
 import { ADD_CARD, ADD_DECK, RECEIVE_DECKS } from "../actions/index";
 
-export default function decks(state = {}, action) {
+export default function decks(state = null, action) {
   switch (action.type) {
     case RECEIVE_DECKS:
       return {

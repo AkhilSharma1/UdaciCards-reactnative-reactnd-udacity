@@ -13,8 +13,7 @@ import {
   handleAddCard,
   handleReceiveDecks
 } from "../actions/index";
-import TextButton from "./TextButton";
-import { red, black, white } from "../utils/colors";
+import {  black, white } from "../utils/colors";
 
 class DeckList extends Component {
   componentDidMount() {
@@ -55,10 +54,7 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
   },
-  btn: {
-    backgroundColor: black,
-    color: white
-  },
+
   item: {
       padding:10,
     alignItems:'center',

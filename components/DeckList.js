@@ -8,12 +8,8 @@ import {
   TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
-import {
-  handleAddDeck,
-  handleAddCard,
-  handleReceiveDecks
-} from "../actions/index";
-import {  black, white } from "../utils/colors";
+import { handleReceiveDecks } from "../actions/index";
+import { black } from "../utils/colors";
 
 class DeckList extends Component {
   componentDidMount() {
@@ -22,11 +18,15 @@ class DeckList extends Component {
 
   renderItem = ({ item }) => (
     <TouchableOpacity
-      onPress={() => console.log(`${item.title} pressed`)}
+      onPress={() => this.props.navigation.navigate("DeckDetail", { deck:item })
+    }
       style={styles.item}
     >
       <Text style={styles.itemTitle}>{item.title}</Text>
-      <Text>{item.questions.length} card{item.questions.length!==1?'s':''}</Text>
+      <Text>
+        {item.questions.length} card
+        {item.questions.length !== 1 ? "s" : ""}
+      </Text>
     </TouchableOpacity>
   );
 
@@ -37,14 +37,14 @@ class DeckList extends Component {
     }
 
     return (
-      <View style={ {flex: 1,}}>
-      <View style={{borderTopWidth:1, borderBottomWidth:1 }}>
-        <FlatList
-          data={decksArr}
-          renderItem={this.renderItem}
-          keyExtractor={(item, index) => `${index}`}
-        />
-      </View>
+      <View style={{ flex: 1 }}>
+        <View style={{ borderTopWidth: 1, borderBottomWidth: 1 }}>
+          <FlatList
+            data={decksArr}
+            renderItem={this.renderItem}
+            keyExtractor={(item, index) => `${index}`}
+          />
+        </View>
       </View>
     );
   }
@@ -52,14 +52,14 @@ class DeckList extends Component {
 
 const styles = StyleSheet.create({
   listContainer: {
-    flex: 1,
+    flex: 1
   },
 
   item: {
-      padding:10,
-    alignItems:'center',
-    borderTopWidth:1,
-    borderColor:black
+    padding: 10,
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderColor: black
   },
   itemTitle: {
     fontSize: 30,

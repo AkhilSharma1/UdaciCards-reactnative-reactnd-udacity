@@ -24,7 +24,7 @@ class Deck extends Component {
         </View>
         <View style={{ marginTop: 100 }}>
           <TextButton
-            onPress={() => console.log("Add card")}
+            onPress={() =>  this.props.navigation.navigate("AddCard", { title:title })}
             style={{
               borderWidth: 1
             }}

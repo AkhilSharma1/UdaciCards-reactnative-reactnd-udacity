@@ -24,6 +24,7 @@ export function saveDeckTitle(title) {
 
 export function addCardToDeck(title, card) {
   return getDeck(title).then(data => {
+
     data['questions'].push(card);
 
      AsyncStorage.mergeItem(

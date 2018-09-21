@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import TextButton from "./TextButton";
 import { black, white } from "../utils/colors";
-import { handleAddDeck, ADD_DECK } from "../actions/index";
+import { handleAddDeck, ADD_DECK, handleAddCard } from "../actions/index";
 import { connect } from "react-redux";
-import { handleReceiveDecks } from "../actions/index";
 
-class NewDeck extends Component {
-  state = {
-    text: ""
+class AddCard extends Component {
+  static navigationOptions = {
+    title: "Add Card"
   };
 
+  state = {
+    question: "",
+    answer: ""
+  };
+
+  //TODO: add success notification on submit
   onSubmit = () => {
-    this.props.dispatch(handleAddDeck(this.state.text));
+    const  title  = this.props.navigation.getParam("title",'None' );
+    const { question, answer } = this.state;
+    this.props.dispatch(handleAddCard(title, { question, answer }));
     this.setState({
-      text: ""
+      question: "",
+      answer: ""
     });
   };
 
@@ -22,14 +30,17 @@ class NewDeck extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text style={{ fontSize: 30 }}>
-            What is the title of your new deck?
-          </Text>
           <TextInput
             style={styles.txtInput}
-            onChangeText={text => this.setState({ text })}
-            placeholder="Deck title"
-            value={this.state.text}
+            onChangeText={text => this.setState({ question:text })}
+            placeholder="Question"
+            value={this.state.question}
+          />
+          <TextInput
+            style={styles.txtInput}
+            onChangeText={text => this.setState({ answer:text })}
+            placeholder="Answer"
+            value={this.state.answer}
           />
           <TextButton style={styles.btn} onPress={this.onSubmit}>
             Submit
@@ -56,4 +67,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect()(NewDeck);
+export default connect()(AddCard);

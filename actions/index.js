@@ -5,9 +5,6 @@ export const ADD_DECK = "ADD_DECK";
 import { saveDeckTitle,addCardToDeck, getDecks } from "../utils/api";
 
 function receiveDecks(decks) {
-  console.log('HI')
-
-  console.log(decks)
   return {
     type: RECEIVE_DECKS,
     decks

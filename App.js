@@ -9,8 +9,9 @@ import Deck from "./components/Deck";
 import { purple, white } from "./utils/colors";
 import { Constants } from "expo";
 import NewDeck from "./components/NewDeck";
-import {
-  createBottomTabNavigator,
+import AddCard from './components/AddCard';
+ 
+import {createBottomTabNavigator,
   createMaterialTopTabNavigator,
   createStackNavigator
 } from "react-navigation";
@@ -93,7 +94,16 @@ const MainNavigator = createStackNavigator({
         backgroundColor: purple
       }
     })
-  }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: ({ navigation }) => ({
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
+      }
+    })
+  },
 });
 
 const styles = StyleSheet.create({

@@ -1,5 +1,7 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "27.0.0",
+    "slug": "udaci-cards",
+    "name": "udaci-cards"
   }
 }

@@ -15,6 +15,7 @@ import {createBottomTabNavigator,
   createMaterialTopTabNavigator,
   createStackNavigator
 } from "react-navigation";
+import Quiz from "./components/Quiz";
 
 function StatusBarWrapper({ backgroundColor, ...props }) {
   return (
@@ -97,6 +98,15 @@ const MainNavigator = createStackNavigator({
   },
   AddCard: {
     screen: AddCard,
+    navigationOptions: ({ navigation }) => ({
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
+      }
+    })
+  },
+  Quiz: {
+    screen: Quiz,
     navigationOptions: ({ navigation }) => ({
       headerTintColor: white,
       headerStyle: {

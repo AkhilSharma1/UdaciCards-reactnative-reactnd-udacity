@@ -11,7 +11,8 @@ class Deck extends Component {
   };
 
   render() {
-    const { title, questions } = this.props.navigation.getParam("deck", {});
+    const deck = this.props.navigation.getParam("deck", {})
+    const { title, questions } = deck
     return (
       // FIXME:make the deck name center of the screen 
       <View style={styles.container}>
@@ -32,7 +33,7 @@ class Deck extends Component {
             Add Card
           </TextButton>
           <TextButton
-            onPress={() => console.log("Start Quiz")}
+            onPress={() => this.props.navigation.navigate("Quiz", { deck:deck })}
             style={{
               backgroundColor: black,
               color: white,

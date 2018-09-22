@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import TextButton from "./TextButton";
 import { black, white } from "../utils/colors";
-import { handleAddDeck, ADD_DECK } from "../actions/index";
+import { handleAddDeck} from "../actions/index";
 import { connect } from "react-redux";
-import { handleReceiveDecks } from "../actions/index";
 
 class NewDeck extends Component {
   state = {

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { green, white, red, purple } from "../utils/colors";
 import TextButton from "./TextButton";
 import Modal from "react-native-modal";
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class Quiz extends Component {
   static navigationOptions = {
@@ -38,6 +39,8 @@ class Quiz extends Component {
     const { cardIndex, showModal, correctAnswers, showQuestion } = this.state;
 
     if (showModal === true) {
+      clearLocalNotification().then(setLocalNotification);
+
       return (
         <Modal isVisible={true}>
           <View style = {{backgroundColor:white}}>

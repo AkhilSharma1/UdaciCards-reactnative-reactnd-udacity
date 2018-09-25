@@ -16,6 +16,7 @@ import {createBottomTabNavigator,
   createStackNavigator
 } from "react-navigation";
 import Quiz from "./components/Quiz";
+import { setLocalNotification } from "./utils/helpers";
 
 function StatusBarWrapper({ backgroundColor, ...props }) {
   return (
@@ -26,6 +27,10 @@ function StatusBarWrapper({ backgroundColor, ...props }) {
 }
 
 export default class App extends React.Component {
+  componentDidMount(){
+  setLocalNotification()
+  }
+
   render() {
     const store = createStore(reducer, middleware);
 
